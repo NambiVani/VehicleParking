@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<script >
+
+const reference = {    
+    "car" : 20,
+    "van" : 10,
+    "bike" : 50
+};
+
+const level = {
+    "car" : 0,
+    "van" : 0,
+    "bike" : 0
+};
+
+const count = {
+    "car" : 0,
+    "van" : 0,
+    "bike" : 0
+};
+
+let park = [count];
+
+
+
+function filvehicle(veh){
+   
+    if(park[level[veh]-1] && park[level[veh]-1][veh-1]<reference[veh]){
+
+        park[level[veh]][veh] =  park[level[veh]][veh] + 1;
+        console.log(veh, ", count " ,park[level[veh]][veh], ", Level", level[veh]);
+
+    }else if(park[level[veh]] && park[level[veh]][veh]<reference[veh]){
+
+        park[level[veh]][veh] = park[level[veh]][veh] + 1;
+        console.log(veh, ", count " ,park[level[veh]][veh], ", Level", level[veh]);
+
+    }else{
+        park.push(count)
+        park[level[veh]][veh] = 1;
+        level[veh] = level[veh]+1;
+        console.log(veh, ", count " ,park[level[veh]][veh], ", Level", level[veh]);
+        //console.log(veh," ",park[level[veh]][veh]);
+     
+}
+
+}
+
+</script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehciel Parking</title>
+</head>
+<body>
+    <center><button id="car" onclick="filvehicle('car')">Click to Park car!</button></center><br>
+    <center><button id="van" onclick="filvehicle('van')">Click to Park van!</button></center><br>
+    <center><button id="bike" onclick="filvehicle('bike')">Click to Park bike!</button></center><br>
+</body>
+
+</html>
